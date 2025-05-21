@@ -29,6 +29,9 @@ Medical professionals often rely on endoscopic imaging for diagnosis. Automating
 ## 📂 Dataset
 
 **Source:** [Kaggle - Curated Colon Dataset for Deep Learning](https://www.kaggle.com/datasets/satwikakth/curated-colon-dataset-for-deep-learning)
+> If you wish to download the original dataset, you can find it on Kaggle:  
+> [https://www.kaggle.com/datasets/francismon/curated-colon-dataset-for-deep-learning](https://www.kaggle.com/datasets/francismon/curated-colon-dataset-for-deep-learning)
+
 
 - 4 Classes
 - Pre-organized into:
@@ -64,5 +67,72 @@ ColonNet-Disease-Classifier/
 │
 ├── wce-cnn.ipynb # Jupyter Notebook with model code
 ├── README.md # Project documentation
-├── requirements.txt # Python dependencies (optional)
-└── dataset/ # Link or info to Kaggle dataset
+
+
+---
+
+## 📈 Results Summary
+
+| Metric              | Value (Example) |
+|---------------------|-----------------|
+| Test Accuracy       | 93.2%           |
+| Cohen Kappa Score   | 0.91            |
+| Best Class Accuracy | Normal (95%)    |
+
+> *NOTE: Actual performance may vary slightly due to training randomness.*
+
+---
+
+## 🧠 Future Improvements
+
+- Hyperparameter tuning (learning rate, batch size)
+- Experiment with EfficientNet, ResNet50
+- Deploy using Flask or Streamlit for real-time predictions
+- Apply Grad-CAM for visualizing what the model "sees"
+
+---
+
+## 💻 Technologies Used
+
+- Python
+- TensorFlow / Keras
+- OpenCV
+- NumPy, Pandas
+- Matplotlib, Seaborn
+- scikit-learn
+
+---
+
+## 🧰 How to Run
+
+```bash
+# Clone the repository
+git clone https://github.com/Itzraj786iul/ColonNet-Disease-Classifier.git
+cd ColonNet-Disease-Classifier
+
+# Install requirements
+pip install -r requirements.txt
+
+# Run the notebook
+jupyter notebook wce-cnn.ipynb
+
+🙋‍♂️ Author
+Raziullah Ansari
+📍 NIT Raipur
+[🔗 LinkedIn](https://www.linkedin.com/in/raziullah-ansari-8984431b6/)
+
+
+---
+
+## 🧾 Sample `requirements.txt` 
+
+```txt
+tensorflow
+opencv-python
+matplotlib
+numpy
+pandas
+scikit-learn
+seaborn
+jupyter
+
