@@ -72,14 +72,15 @@ def create_bir_model():
         Dropout(0.5),
         Dense(4, activation='softmax')
     ])
-    return model ```
+    return model 
+```
 
 ## 📊 Evaluation Metrics
 ## ✅ Deep Learning (MobileNet-based Model)
-Metric	Value
-Test Accuracy	98%
-Validation Loss	0.1483
-Cohen's Kappa	0.977
+-Metric	Value
+-Test Accuracy	98%
+-Validation Loss	0.1483
+-Cohen's Kappa	0.977
 
 📈 Classical Machine Learning (10-Fold CV)
 Model	Accuracy
