@@ -1,18 +1,18 @@
-# ColonNet-Disease-Classifier 🧠🔬
+# GI-Disease-Classifier 🧠🔬
 
-A deep learning-based image classification project to detect and categorize colon-related diseases from endoscopic images using Convolutional Neural Networks (CNNs) and transfer learning with MobileNet.
+A deep learning-based image classification project to detect and categorize gastrointestinal diseases from endoscopic images using Convolutional Neural Networks (CNNs) and transfer learning with MobileNet.
 
 ---
 
 ## 📌 Project Overview
 
-The project focuses on building a robust CNN-based model to classify images of colonoscopy into four categories:
+This project focuses on classifying gastrointestinal diseases into the following four categories:
 - Normal
 - Ulcerative Colitis
 - Polyps
 - Esophagitis
 
-Medical professionals often rely on endoscopic imaging for diagnosis. Automating classification can assist in faster and more consistent diagnoses, particularly in resource-limited settings.
+The goal is to assist medical professionals in faster and more consistent diagnoses using automated image classification models.
 
 ---
 
@@ -22,29 +22,32 @@ Medical professionals often rely on endoscopic imaging for diagnosis. Automating
 - **Architecture:** MobileNet backbone + Conv2D + MaxPooling2D + BatchNormalization + Dense Layers
 - **Loss Function:** Categorical Crossentropy
 - **Optimizer:** Adam
-- **Evaluation:** Accuracy, Confusion Matrix, Classification Report, Cohen Kappa Score
+- **Evaluation:** Accuracy, ROC Curves, Cohen Kappa Score, Classification Report
 
 ---
 
 ## 📂 Dataset
 
-**Source:** [Kaggle - Curated Colon Dataset for Deep Learning](https://www.kaggle.com/datasets/satwikakth/curated-colon-dataset-for-deep-learning)
-> If you wish to download the original dataset, you can find it on Kaggle:  
-> [https://www.kaggle.com/datasets/francismon/curated-colon-dataset-for-deep-learning](https://www.kaggle.com/datasets/francismon/curated-colon-dataset-for-deep-learning)
+- **Source:** Custom dataset (4-class balanced endoscopic image dataset)
+- **Structure:**
 
+| Split       | Normal | Ulcerative Colitis | Polyps | Esophagitis |
+|-------------|--------|--------------------|--------|-------------|
+| Training    | 800    | 800                | 800    | 800         |
+| Validation  | 500    | 500                | 500    | 500         |
+| Test        | 200    | 200                | 200    | 200         |
 
-- 4 Classes
-- Pre-organized into:
-  - `train/`
-  - `test/`
-  - `val/`
-- Real-world colonoscopy images
+## Organized in folders:
+-data/
+-├── train/
+-├── val/
+-└── test/
 
 ---
 
 ## 🧪 Data Augmentation
 
-Applied real-time augmentation to improve generalization:
+Applied real-time image augmentation using Keras ImageDataGenerator:
 - Rotation Range: ±30°
 - Zoom Range: 20%
 - Width/Height Shift: 20%
@@ -53,86 +56,90 @@ Applied real-time augmentation to improve generalization:
 
 ---
 
+## 🧠 Model Architecture
+
+```python
+def create_bir_model():
+    base_model = MobileNet(include_top=False, weights='imagenet')
+    model = Sequential([
+        base_model,
+        Conv2D(64, (3,3), activation='relu', kernel_regularizer=l2(0.01)),
+        MaxPooling2D(2,2),
+        BatchNormalization(),
+        Dropout(0.3),
+        Flatten(),
+        Dense(512, activation='relu', kernel_regularizer=l2(0.01)),
+        Dropout(0.5),
+        Dense(4, activation='softmax')
+    ])
+    return model ```
+
 ## 📊 Evaluation Metrics
+## ✅ Deep Learning (MobileNet-based Model)
+Metric	Value
+Test Accuracy	98%
+Validation Loss	0.1483
+Cohen's Kappa	0.977
 
-- **Accuracy**
-- **Confusion Matrix**
-- **Cohen Kappa Score**
-- **Precision, Recall, F1-score (via `classification_report`)**
+📈 Classical Machine Learning (10-Fold CV)
+Model	Accuracy
+SVM	99.44%
+Random Forest	99.38%
+Logistic Regression	99.38%
+Decision Tree	98.56%
 
----
+gi-disease-classification/
+├── data/
+│   ├── train/
+│   ├── val/
+│   └── test/
+├── models/
+│   └── pretrained/
+├── utils/
+│   ├── data_loader.py
+│   └── visualization.py
+├── train.py
+├── evaluate.py
+├── requirements.txt
+└── README.md
 
-## 📁 Folder Structure
-ColonNet-Disease-Classifier/
-│
-├── wce-cnn.ipynb # Jupyter Notebook with model code
-├── README.md # Project documentation
+💻 Technologies Used
+Python 3.8+
 
+TensorFlow 2.12
 
----
+OpenCV 4.7
 
-## 📈 Results Summary
+NumPy, Pandas
 
-| Metric              | Value (Example) |
-|---------------------|-----------------|
-| Test Accuracy       | 93.2%           |
-| Cohen Kappa Score   | 0.91            |
-| Best Class Accuracy | Normal (95%)    |
+scikit-learn
 
-> *NOTE: Actual performance may vary slightly due to training randomness.*
+Matplotlib, Seaborn
 
----
-
-## 🧠 Future Improvements
-
-- Hyperparameter tuning (learning rate, batch size)
-- Experiment with EfficientNet, ResNet50
-- Deploy using Flask or Streamlit for real-time predictions
-- Apply Grad-CAM for visualizing what the model "sees"
-
----
-
-## 💻 Technologies Used
-
-- Python
-- TensorFlow / Keras
-- OpenCV
-- NumPy, Pandas
-- Matplotlib, Seaborn
-- scikit-learn
-
----
-
-## 🧰 How to Run
-
-```bash
 # Clone the repository
-git clone https://github.com/Itzraj786iul/ColonNet-Disease-Classifier.git
-cd ColonNet-Disease-Classifier
+git clone https://github.com/yourusername/gi-disease-classification.git
+cd gi-disease-classification
 
-# Install requirements
+# Install dependencies
 pip install -r requirements.txt
 
-# Run the notebook
-jupyter notebook wce-cnn.ipynb
+# Train the model
+python train.py \
+  --train_dir path/to/train \
+  --val_dir path/to/val \
+  --epochs 30 \
+  --batch_size 32
+
+📈 Future Improvements
+Use EfficientNet, DenseNet, or ResNet variants
+
+Experiment with learning rate schedulers and optimizers
+
+Deploy via Streamlit/Flask for real-time inference
+
+Integrate Grad-CAM for interpretability
 
 🙋‍♂️ Author
 Raziullah Ansari
 📍 NIT Raipur
-[🔗 LinkedIn](https://www.linkedin.com/in/raziullah-ansari-8984431b6/)
-
-
----
-
-## 🧾 Sample `requirements.txt` 
-
-```txt
-tensorflow
-opencv-python
-matplotlib
-numpy
-pandas
-scikit-learn
-seaborn
-jupyter
-
+🔗 LinkedIn(https://www.linkedin.com/in/raziullah-ansari-8984431b6/)
