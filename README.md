@@ -76,51 +76,58 @@ def create_bir_model():
 ```
 
 ## 📊 Evaluation Metrics
-## ✅ Deep Learning (MobileNet-based Model)
--Metric	Value
--Test Accuracy	98%
--Validation Loss	0.1483
--Cohen's Kappa	0.977
 
-📈 Classical Machine Learning (10-Fold CV)
-Model	Accuracy
-SVM	99.44%
-Random Forest	99.38%
-Logistic Regression	99.38%
-Decision Tree	98.56%
+### ✅ Deep Learning (MobileNet-based Model)
 
-gi-disease-classification/
+| Metric           | Value   |
+|------------------|---------|
+| Test Accuracy    | 98%     |
+| Validation Loss  | 0.1483  |
+| Cohen's Kappa    | 0.977   |
+
+### 📈 Classical Machine Learning (10-Fold CV)
+
+| Model               | Accuracy |
+|---------------------|----------|
+| SVM                 | 99.44%   |
+| Random Forest       | 99.38%   |
+| Logistic Regression | 99.38%   |
+| Decision Tree       | 98.56%   |
+
+---
+
+## 📁 Project Structure
+
 ├── data/
-│   ├── train/
-│   ├── val/
-│   └── test/
+│ ├── train/
+│ ├── val/
+│ └── test/
 ├── models/
-│   └── pretrained/
-├── utils/
-│   ├── data_loader.py
-│   └── visualization.py
-├── train.py
-├── evaluate.py
 ├── requirements.txt
 └── README.md
 
-💻 Technologies Used
-Python 3.8+
 
-TensorFlow 2.12
 
-OpenCV 4.7
+---
 
-NumPy, Pandas
+## 💻 Technologies Used
 
-scikit-learn
+- Python 3.8+
+- TensorFlow 2.12
+- OpenCV 4.7
+- NumPy, Pandas
+- scikit-learn
+- Matplotlib, Seaborn
 
-Matplotlib, Seaborn
+---
 
+## ⚙️ How to Run
+
+```bash
 # Clone the repository
 git clone https://github.com/yourusername/gi-disease-classification.git
 cd gi-disease-classification
-
+```
 # Install dependencies
 pip install -r requirements.txt
 
@@ -131,16 +138,18 @@ python train.py \
   --epochs 30 \
   --batch_size 32
 
-📈 Future Improvements
-Use EfficientNet, DenseNet, or ResNet variants
 
-Experiment with learning rate schedulers and optimizers
+## 📈 Future Improvements
 
-Deploy via Streamlit/Flask for real-time inference
+- Use EfficientNet, DenseNet, or ResNet variants  
+- Experiment with learning rate schedulers and optimizers  
+- Deploy via Streamlit/Flask for real-time inference  
+- Integrate Grad-CAM for interpretability  
 
-Integrate Grad-CAM for interpretability
+---
 
-🙋‍♂️ Author
-Raziullah Ansari
-📍 NIT Raipur
-🔗 LinkedIn(https://www.linkedin.com/in/raziullah-ansari-8984431b6/)
+## 🙋‍♂️ Author
+
+**Raziullah Ansari**  
+📍 NIT Raipur  
+🔗 [LinkedIn](https://www.linkedin.com/in/raziullah-ansari-8984431b6/)
