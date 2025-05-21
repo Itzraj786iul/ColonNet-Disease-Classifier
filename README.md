@@ -60,4 +60,9 @@ Applied real-time augmentation to improve generalization:
 ---
 
 ## 📁 Folder Structure
-
+ColonNet-Disease-Classifier/
+│
+├── wce-cnn.ipynb # Jupyter Notebook with model code
+├── README.md # Project documentation
+├── requirements.txt # Python dependencies (optional)
+└── dataset/ # Link or info to Kaggle dataset
