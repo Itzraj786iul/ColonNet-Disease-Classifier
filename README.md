@@ -125,8 +125,7 @@ def create_bir_model():
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/gi-disease-classification.git
-cd gi-disease-classification
+git clone https://github.com/Itzraj786iul/ColonNet-Disease-classifier.git
 ```
 # Install dependencies
 pip install -r requirements.txt
